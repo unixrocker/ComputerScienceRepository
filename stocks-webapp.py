@@ -21,6 +21,15 @@ def send():
         return render_template('csv.html',csv=correlation)
     return render_template('index.html')
 
+# Handles the file the user uploaded.
+@app.route('/upload',methods = ['GET','POST'])
+def upload_file():
+   if request.method == 'POST':
+      csvfile = request.files['file']
+      textbytes = csvfile.read()
+      text = textbytes.decode("utf-8")
+      correlation = compute_matrix(text)
+      return render_template('csv.html',csv=correlation)
 
 # A and B are equal length arrays of stock prices.
 def compute_correlation(A, B):
