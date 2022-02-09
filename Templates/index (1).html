@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+
+  <body>
+     <h2>Stock Correlation App</h2>
+	 <img src="static/images/market.jpg" width=200>
+	 <p>
+	 Computes correlated stocks based on historical prices. If stock alpha has daily prices A[0], A[1], A[2], ..., A[N-1], and stock beta has daily prices B[0], B[1], B[2], ..., B[N-1], then their correlation is the number of days they move in the same direction minus the number of days they move in opposite directions. (Formulaically, it's (N-1) - |{i, 0 < 1 < N-1 | sgn(A[i+1] - A[i]) != sgn(B[i+1] - B[i])}|.)
+	 <p>
+     <h3>Text Entry</h3>
+	 Enter the stocks here in this comma-seperated format:<br>
+	 <code>xom,12,14,16</code><br>
+	 <code>ge,10,20,30</code><br>
+	 <code>ibm,100,100,100</code><br>
+	 (The first entry is the stock symbol, the following are the prices each day.)
+
+    <form method="POST" action = "/send">
+      <div class = "form-group">
+        <textarea name = "csv" rows="10" cols="60"></textarea>
+      </div>
+      <input class="btn btn-primary" type="submit" value="Submit Text">
+    </form>
+
+<p>
+
+    <h3>File Entry</h3>
+	 Enter the stocks as a file (in the same format as the sample text above).  <br>
+	 <p>
+    <form action = "/upload" method = "POST" enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+    </form>  
+
+  </body>
+
+</html>
